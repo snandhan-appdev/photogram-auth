@@ -11,6 +11,12 @@ class LikesController < ApplicationController
     render("like_templates/show.html.erb")
   end
 
+  def my_likes
+    @likes = Like.where(user_id: current_user.id)
+
+    render("like_templates/my_likes.html.erb")
+  end
+
   def new_form
     @like = Like.new
 

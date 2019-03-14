@@ -1,17 +1,22 @@
 <div class="row mb-3">
-  <div class="col-md-12">
+  <div class="col-md-8 offset-md-2">
     <h1>
-      All photos
+      User #<%= @user.id %> details
     </h1>
 
-    <a href="/photos/new" class="btn btn-block btn-outline-secondary">
-      Add a new photo
-    </a>
-  </div>
-</div>
+    <h4>
+        Username: <%= @user.username %>
+        </br>
+        Email: <%= @user.email %>
+    </h4>
 
 
-<hr>
+    <div class="row mb-3">
+      <div class="col">
+        <a href="/users" class="btn btn-block btn-outline-secondary">
+          Go back
+        </a>
+      </div>
 
 <div class="row mb-3">
   <div class="col-md-12">
@@ -45,7 +50,7 @@
         </th>
       </tr>
 
-      <% @photos.each do |photo| %>
+      <% Photo.where(user_id: @user.id).each do |photo| %>
       <tr>
         <td>
           <%= photo.id %>
